@@ -12,5 +12,17 @@
         {{form}}
         <input type="submit" value="Submit">
     </form>
+    <hr>
+    {% if data %}
+        {% for rec in data %}
+            {{rec.name}} |
+            {{rec.orgdetail}} |
+            {{rec.register_on}} |
+            {{rec.last_modified}}<br>
+            <hr>
+        {% endfor %}
+    {% else %}
+        <h1>Not Found</h1>
+    {% endif %}
 </body>
 </html>

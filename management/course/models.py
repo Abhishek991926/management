@@ -10,7 +10,7 @@ class Orgdetail(models.Model):
         return self.name
 
 class Empdetail(models.Model):
-    name=models.CharField(max_length=50,unique=True)
+    name=models.CharField(max_length=50)
     orgdetail=models.ForeignKey(Orgdetail, on_delete=models.CASCADE)
     register_on=models.DateTimeField(auto_now_add=True)
     last_modified=models.DateTimeField(auto_now=True)
