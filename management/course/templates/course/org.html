@@ -22,6 +22,7 @@
     <hr>
     {% if data %}
         {% for rec in data %}
+            {{rec.id}} |
             {{rec.name}} |
             {{rec.register_on}} |
             {{rec.last_modified}}<br>
