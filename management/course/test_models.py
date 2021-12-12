@@ -3,7 +3,6 @@ from django.test import TestCase
 from django.db import IntegrityError
 from django.core.exceptions import ValidationError
 from .models import Orgdetail,Empdetail
-from .forms import OrgdetailForm,EmpdetailForm
 
 # Create your tests here.
 
@@ -61,20 +60,3 @@ class EmpdetailModelTest(TestCase):
         with self.assertRaises(ValidationError):
             new_emp.full_clean()
 
-
-
-class OrgdetailFormTest(TestCase):
-    def test_valid_forms(self):
-        form_data={'name':'Jaxl'}
-        form=OrgdetailForm(data=form_data)
-        self.assertTrue(form.is_valid())
-    
-
-class EmpdetailFormTest(TestCase):
-    def test_valid_forms(self):
-        rec=Orgdetail.objects.create(name="Jaxl")
-        form_data={'name':'Abhishek Kumar Yadav','orgdetail':rec}
-        form=EmpdetailForm(data=form_data)
-        self.assertTrue(form.is_valid())
-
-    
