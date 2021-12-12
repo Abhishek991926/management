@@ -8,15 +8,15 @@ from django.contrib import messages
 
 def org_page(request):
     if request.method=='POST':
-        # data=OrgdetailForm(request.POST)
+        data=OrgdetailForm(request.POST)
         print(type(request.POST.get('name')))
-        # if data.is_valid():
-        #     name=data.cleaned_data['name']
-        #     rec=Orgdetail(name=name)
-        #     try:
-        #         rec.save()
-        #     except IntegrityError:
-        #         messages.warning(request, 'Name already exists.')
+        if data.is_valid():
+            name=data.cleaned_data['name']
+            rec=Orgdetail(name=name)
+            try:
+                rec.save()
+            except IntegrityError:
+                messages.warning(request, 'Name already exists.')
     fm=OrgdetailForm()
     data=Orgdetail.objects.all()
     return render(request,'course/org.html',{'data':data,'form':fm})
